@@ -6,20 +6,20 @@ import "fmt"
 // handle endianness of uints?
 // does len need to checked for size?
 
-type PersonV2Enc struct {
+type PersonV3Enc struct {
 	data []byte
 	curFieldIndex int
 }
 
 // should this accept a value to presize the cap of data?
-func NewPersonV2Enc() *PersonV2Enc {
+func NewPersonV3Enc() *PersonV3Enc {
 	// Cap: should there be a default initial size?  If so, what is
 	// a reasonable first approximation?  Should it be possible for
 	// the caller to pass an initial cap?
-	return &PersonV2Enc{data: make([]byte, 0, 32)}
+	return &PersonV3Enc{data: make([]byte, 0, 32)}
 }
 
-func (e *PersonV2Enc) SetAge(v uint16) {
+func (e *PersonV3Enc) SetAge(v uint16) {
 	if e.curFieldIndex > 0 {
 		panic(fmt.Sprintf("SetAge out of order; current field index is %d", e.curFieldIndex))
 	}
@@ -28,7 +28,7 @@ func (e *PersonV2Enc) SetAge(v uint16) {
 	e.curFieldIndex ++
 }
 
-func (e *PersonV2Enc) SetSiblings(v uint16) {
+func (e *PersonV3Enc) SetSiblings(v uint16) {
 	if e.curFieldIndex != 1 {
 		panic(fmt.Sprintf("SetSiblings out of order; current field index is %d", e.curFieldIndex))
 	}
@@ -37,7 +37,7 @@ func (e *PersonV2Enc) SetSiblings(v uint16) {
 	e.curFieldIndex ++
 }
 
-func (e *PersonV2Enc) SetName(v string) {
+func (e *PersonV3Enc) SetName(v string) {
 	if e.curFieldIndex != 2 {
 		panic(fmt.Sprintf("SetName out of order; current field index is %d", e.curFieldIndex))
 	}
@@ -46,7 +46,7 @@ func (e *PersonV2Enc) SetName(v string) {
 	e.curFieldIndex ++
 }
 
-func (e *PersonV2Enc) SetPhone(v string) {
+func (e *PersonV3Enc) SetPhone(v string) {
 	if e.curFieldIndex != 3 {
 		panic(fmt.Sprintf("SetPhone out of order; current field index is %d", e.curFieldIndex))
 	}
@@ -55,6 +55,6 @@ func (e *PersonV2Enc) SetPhone(v string) {
 	e.curFieldIndex ++
 }
 
-func (e *PersonV2Enc) Bytes() []byte {
+func (e *PersonV3Enc) Bytes() []byte {
 	return e.data
 }

@@ -1,6 +1,6 @@
 chitin v1
 
-message Person v2 {
+message Person v3 {
 	wire format: v1
 
 	slots {
@@ -10,5 +10,6 @@ message Person v2 {
 
 	fields {
 	       name string
+	       phone string
 	}
 }

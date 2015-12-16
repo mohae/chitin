@@ -17,7 +17,7 @@ func TestEncode(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		e := NewPersonV2Enc()
+		e := NewPersonV3Enc()
 		e.SetAge(test.age)
 		e.SetSiblings(test.siblings)
 		e.SetName(test.name)
