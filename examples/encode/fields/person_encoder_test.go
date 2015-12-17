@@ -6,10 +6,10 @@ import (
 
 func TestEncode(t *testing.T) {
 	tests := []struct {
-		age uint16
+		age      uint16
 		siblings uint16
-		name string
-		phone string
+		name     string
+		phone    string
 		expected []byte
 	}{
 		{21, 3, "Jane", "", []byte{0, 21, 0, 3, 5, 'J', 'a', 'n', 'e', 1}},
